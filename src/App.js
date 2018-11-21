@@ -1,28 +1,57 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+// import { BrowserRouter as Route } from "react-router-dom";
+// import TvShows from "./components/TvShows";
+// import Movies from "./components/Movies";
+// import axios from "axios";
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+function App() {
+  // useEffect(() => {
+  //   axios.get(`/api/data/tvshows/:id`).then(response => {
+  //     this.setState({
+  //       tvshows: response.data
+  //     });
+  //   });
+  // });
+  // return (
+  //   <div>
+  //     <Route exact path="/" component={TvShows} />
+  //     <Route path="/secure/movies" component={Movies} />
+  //   </div>
+  // );
+
+  const [shows, setShows] = useState([]);
+
+  useEffect(() => {
+    fetch(`http://localhost:3000/api/data/tvShows`)
+      .then(response => response.json())
+      .then(data => {
+        setShows(data); // set users in state
+      });
+  }, []); // empty array because we only run once
+
+  //   useEffect(() => {
+  //     axios.get("/api/data/tvShows/").then(response => {
+  //       this.setShows({
+  //         tvShows: response.data
+  //       });
+  //     });
+  //   });
+
+  //   const tvShowsDisplayed = shows => {
+  //     const tvShows = [...shows];
+  //     setShows(tvShows);
+  //   };
+
+  return (
+    <div>
+      {shows.map(shows => (
+        <div key={shows.id}>
+          <h3>{shows.name}</h3>
+          <h5>{shows.aCastMember}</h5>
+        </div>
+      ))}
+    </div>
+  );
 }
 
 export default App;

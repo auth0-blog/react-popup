@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "name": "The Office",
+    "airDate": "March 24, 2005",
+    "lastShowDate": "May 16, 2013",
+    "aCastMember": "Steve Carell",
+    "totalSeasons": "9",
+    "totalEpisodes": "201",
+    "interestingFact": "John Krazinski shot the footage of Scranton that appears in the show’s opening credits from his jeep when he and a few friends cased the city before he began shooting."
+  },
+  {
+    "id": 2,
+    "name": "Mad Men",
+    "airDate": "July 19, 2007",
+    "lastShowDate": "May 17, 2015",
+    "aCastMember": "Jon Hamm",
+    "totalSeasons": "7",
+    "totalEpisodes": "92",
+    "interestingFact": "The first and second episodes were shot one year apart."
+  },
+  {
+    "id": 3,
+    "name": "Friends",
+    "airDate": "September 22, 1994",
+    "lastShowDate": "May 6, 2004",
+    "aCastMember": "Jennifer Aniston",
+    "totalSeasons": "10",
+    "totalEpisodes": "236",
+    "interestingFact": "The theme song performed by The Rembrandts became a #1 single on the American pop charts."
+  },
+  {
+    "id": 4,
+    "name": "Stranger Things",
+    "airDate": "July 15, 2016",
+    "lastShowDate": "October 27, 2017",
+    "aCastMember": "Millie Bobby Brown",
+    "totalSeasons": "2",
+    "totalEpisodes": "17",
+    "interestingFact": "They auditioned 906 boys and 307 girls for the main roles."
+  },
+  {
+    "id": 5,
+    "name": "Seinfeld",
+    "airDate": "July 5, 1989",
+    "lastShowDate": "May 14, 1998",
+    "aCastMember": "Julia Louis-Dreyfus",
+    "totalSeasons": "9",
+    "totalEpisodes": "180",
+    "interestingFact": "Jerry says 'Hello, Newman' only 15 times in the entire series."
+  },
+  {
+    "id": 6,
+    "name": "Breaking Bad",
+    "airDate": "January 20, 2008",
+    "lastShowDate": "September 29, 2013",
+    "aCastMember": "Aaron Paul",
+    "totalSeasons": "5",
+    "totalEpisodes": "62",
+    "interestingFact": "Only two actors appear in every single episode, Aaron Paul and Bryan Cranston."
+  }
+]

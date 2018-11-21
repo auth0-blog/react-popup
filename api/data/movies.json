@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Forrest Gump",
+    "releaseDate": "July 6, 1994",
+    "aCastMember": "Tom Hanks",
+    "interestingFact": "During the ping-pong matches, there was no ball; it was entirely CGI, animated to meet the actors’ paddles."
+  },
+  {
+    "id": 2,
+    "name": "The Incredibles",
+    "airDate": "November 5, 2004",
+    "aCastMember": "Samuel L. Jackson",
+    "interestingFact": "The original title of the film was 'The Invincibles.'"
+  },
+  {
+    "id": 3,
+    "name": "Black Panther",
+    "airDate": "January 29, 2018",
+    "aCastMember": "Chadwick Boseman",
+    "interestingFact": "Chadwick Boseman (Black Panther) has a background in martial arts and did his own stunts."
+  },
+  {
+    "id": 4,
+    "name": "Harry Potter and the Sorcerer's Stone",
+    "airDate": "November 14, 2001",
+    "aCastMember": "Daniel Radcliffe",
+    "interestingFact": "The book and movie are called 'Harry Potter and the Philosopher's Stone' everywhere except the United States."
+  },
+  {
+    "id": 5,
+    "name": "Finding Nemo",
+    "airDate": "May 30, 2003",
+    "aCastMember": "Ellen DeGeneres",
+    "interestingFact": "The tiki heads in the tank are caricatures of Pixar employees."
+  },
+  {
+    "id": 6,
+    "name": "Jurassic Park",
+    "airDate": "June 11, 1993",
+    "aCastMember": "Jeff Goldblum",
+    "interestingFact": "Jurassic Park was shot on location in 1992 on Hawaii's Kauai Island."
+  }
+]
