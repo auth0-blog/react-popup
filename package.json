@@ -5,6 +5,7 @@
   "main": "server/server.js",
   "proxy": "",
   "dependencies": {
+    "auth0-js": "^9.8.2",
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "cors": "^2.8.5",

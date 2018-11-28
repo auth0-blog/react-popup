@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 // import TvShows from "./components/TvShows";
 // import Movies from "./components/Movies";
 // import axios from "axios";
+import Auth from "./auth/service.js";
 
 function App() {
   // useEffect(() => {
@@ -20,6 +21,8 @@ function App() {
   // );
 
   const [shows, setShows] = useState([]);
+
+  const auth = new Auth();
 
   useEffect(() => {
     fetch(`http://localhost:3000/api/data/tvShows`)
@@ -47,9 +50,10 @@ function App() {
       {shows.map(shows => (
         <div key={shows.id}>
           <h3>{shows.name}</h3>
-          <h5>{shows.aCastMember}</h5>
+          <h5>{shows.airDate}</h5>
         </div>
       ))}
+      <button onClick={() => auth.login()}>hi there</button>
     </div>
   );
 }

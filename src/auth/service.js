@@ -1,26 +1,41 @@
-import environment from "./../../environments/environments";
+import { environment } from "./../environments/environments";
+import * as auth0 from "auth0-js";
+import { bindNodeCallback } from "rxjs";
 
-export default Auth({
-  auth0: computed(function() {
-    return new auth0.WebAuth({
-      domain: environment.auth.domain, // domain from auth0
-      clientID: environment.auth.clientId, // clientId from auth0
-      redirectUri: environment.auth.popupRedirect,
-      responseType: "id_token",
-      scope: "openid profile email" // adding profile because we want username, given_name, etc
-    });
-  }),
-  /**
-   * Send a user over to the hosted auth0 login page
-   */
-  login() {
-    this.get("auth0").authorize();
-  },
+export default class Auth {
+  auth0 = new auth0.WebAuth({
+    domain: environment.auth.domain,
+    clientID: environment.auth.clientId,
+    redirectUri: environment.auth.popupRedirect,
+    responseType: "id_token",
+    scope: "openid profile email"
+    // redirect: false
+  });
 
-  /**
-   * When a user lands back on our application
-   * Parse the hash and store user info
-   */
+  authFlag = "isLoggedIn";
+  authStatus = this.isAuthenticated
+    ? "init_with_auth_flag"
+    : "init_no_auth_flag";
+  logoutPath = "/";
+  defaultSuccessPath = "/";
+  popupAuth() {
+    bindNodeCallback(this.Auth0.popup.authorize.bind(this.Auth0.popup));
+  }
+
+  login(navAccess) {
+    this.auth0.authorize();
+    if (!navAccess) {
+      // If user clicked login button organically, store
+      // path to redirect to after successful login
+      this.setAuthRedirect(this.router.url);
+    }
+    this.setAuthStatus("popup_auth_open");
+    this.popupAuth$({}).subscribe(
+      authResult => this.localLogin(authResult, navAccess),
+      err => this.handleError(err)
+    );
+  }
+
   handleAuthentication() {
     return new Promise(resolve => {
       this.get("auth0").parseHash((err, authResult) => {
@@ -33,29 +48,19 @@ export default Auth({
         return resolve();
       });
     });
-  },
+  }
 
-  /**
-   * Computed to tell if a user is logged in or not
-   * @return boolean
-   */
-  isAuthenticated: computed(function() {
+  isAuthenticated() {
     return this.get("checkLogin");
-  }),
+  }
 
-  /**
-   * Use the token to set our user
-   */
-  setUser(token) {
+  setUser(id_token) {
     // once we have a token, we are able to go get the users information
-    this.get("auth0").client.userInfo(token, (err, profile) =>
+    this.get("auth0").client.userInfo(id_token, (err, profile) =>
       this.set("user", profile)
     );
-  },
+  }
 
-  /**
-   * Check if we are authenticated using the auth0 library's checkSession
-   */
   checkLogin() {
     // check to see if a user is authenticated, we'll get a token back
     this.get("auth0").checkSession({}, (err, authResult) => {
@@ -63,15 +68,12 @@ export default Auth({
       if (err) return err;
       this.setUser(authResult.accessToken);
     });
-  },
+  }
 
-  /**
-   * Get rid of everything in sessionStorage that identifies this user
-   */
   logout() {
     this.get("auth0").logout({
       clientID: environment.auth.clientId,
-      returnTo: "http://localhost:4200"
+      returnTo: "http://localhost:3000"
     });
   }
-});
+}

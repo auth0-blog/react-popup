@@ -6,7 +6,7 @@
 .pnp.js
 /api/config.js
 /src/close-popup/index.html
-/environments/environments.js
+/src/environments/environments.js
 
 # testing
 /coverage
