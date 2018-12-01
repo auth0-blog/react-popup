@@ -1,15 +1,14 @@
 import { environment } from "./../environments/environments";
-import * as auth0 from "auth0-js";
+import * as Auth0 from "auth0-js";
 import { bindNodeCallback } from "rxjs";
 
 export default class Auth {
-  auth0 = new auth0.WebAuth({
+  auth0 = new Auth0.WebAuth({
     domain: environment.auth.domain,
     clientID: environment.auth.clientId,
     redirectUri: environment.auth.popupRedirect,
     responseType: "id_token",
     scope: "openid profile email"
-    // redirect: false
   });
 
   authFlag = "isLoggedIn";
@@ -19,35 +18,23 @@ export default class Auth {
   logoutPath = "/";
   defaultSuccessPath = "/";
   popupAuth() {
-    bindNodeCallback(this.Auth0.popup.authorize.bind(this.Auth0.popup));
+    bindNodeCallback(this.auth0.popup.authorize.bind(this.auth0.popup));
   }
 
   login(navAccess) {
-    this.auth0.authorize();
+    this.auth0.popup.authorize({}, (err, results) => {
+      console.log(err, results);
+    });
     if (!navAccess) {
       // If user clicked login button organically, store
       // path to redirect to after successful login
-      this.setAuthRedirect(this.router.url);
+      //   this.setAuthRedirect(this.router.url);
     }
-    this.setAuthStatus("popup_auth_open");
-    this.popupAuth$({}).subscribe(
-      authResult => this.localLogin(authResult, navAccess),
-      err => this.handleError(err)
-    );
-  }
-
-  handleAuthentication() {
-    return new Promise(resolve => {
-      this.get("auth0").parseHash((err, authResult) => {
-        if (err) return false;
-
-        if (authResult && authResult.accessToken) {
-          this.setUser(authResult.accessToken);
-        }
-
-        return resolve();
-      });
-    });
+    // this.setAuthStatus("popup_auth_open");
+    // this.popupAuth$({}).subscribe(
+    //   authResult => this.localLogin(authResult, navAccess),
+    //   err => this.handleError(err)
+    // );
   }
 
   isAuthenticated() {
@@ -73,7 +60,7 @@ export default class Auth {
   logout() {
     this.get("auth0").logout({
       clientID: environment.auth.clientId,
-      returnTo: "http://localhost:3000"
+      returnTo: "http://localhost:0"
     });
   }
 }

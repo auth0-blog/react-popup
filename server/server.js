@@ -18,9 +18,13 @@ app.use(cors());
 // if (process.env.NODE_ENV !== "dev") {
 //   app.use(
 //     "/",
-//     express.static(path.join(__dirname, "./build/react-authentication"))
+//     express.static(path.join(__dirname, "../build/react-authentication"))
 //   );
 // }
+
+app.get("/close-popup", (req, res) => {
+  res.sendFile(path.join(__dirname, "../src/close-popup/index.html"));
+});
 
 require("../api/routes")(app, config);
 
