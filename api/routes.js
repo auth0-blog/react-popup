@@ -21,7 +21,7 @@ module.exports = function(app, config) {
   //   if (process.env.NODE_ENV !== "dev") {
   //     app.get("*", (req, res) => {
   //       res.sendFile(
-  //         path.join(__dirname, "/build/react-authentication/index.html")
+  //         path.join(__dirname, "/build/auth0/index.html")
   //       );
   //     });
   //   }
@@ -36,6 +36,16 @@ module.exports = function(app, config) {
       totalSeasons: show.totalSeasons,
       totalEpisodes: show.totalEpisodes,
       interestingFact: show.interestingFact
+    };
+  });
+
+  const allMovies = moviesJson.map(movie => {
+    return {
+      id: movie.id,
+      name: movie.name,
+      airDate: movie.airDate,
+      aCastMember: movie.aCastMember,
+      interestingFact: movie.interestingFact
     };
   });
 
@@ -58,6 +68,14 @@ module.exports = function(app, config) {
 
   app.get("/api/data/tvshows", (req, res) => {
     res.json(allShows);
+  });
+
+  app.get("/api/data/movies", (req, res) => {
+    res.json(allMovies);
+  });
+
+  app.get("/close-popup", (req, res) => {
+    res.sendFile(path.join(__dirname, "../src/close-popup/index.html"));
   });
 
   app.get("/api/data/tvshows/:id", (req, res) => {

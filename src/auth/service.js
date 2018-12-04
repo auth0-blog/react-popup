@@ -60,7 +60,7 @@ export default class Auth {
   logout() {
     this.get("auth0").logout({
       clientID: environment.auth.clientId,
-      returnTo: "http://localhost:0"
+      returnTo: "http://localhost:3000"
     });
   }
 }
