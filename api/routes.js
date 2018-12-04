@@ -2,6 +2,7 @@ const showsJson = require("./data/tvShows.json");
 const moviesJson = require("./data/movies.json");
 const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
+const path = require("path");
 
 const delay = () => Math.random() * 2500;
 
@@ -18,13 +19,12 @@ module.exports = function(app, config) {
     algorithm: "RS256"
   });
 
-  //   if (process.env.NODE_ENV !== "dev") {
-  //     app.get("*", (req, res) => {
-  //       res.sendFile(
-  //         path.join(__dirname, "/build/auth0/index.html")
-  //       );
-  //     });
-  //   }
+  if (process.env.NODE_ENV !== "dev") {
+    // @TODO: should this be / or *? And why? Is this completely unnecessary in React?
+    app.get("/", (req, res) => {
+      res.sendFile(path.join(__dirname, "../build/index.html"));
+    });
+  }
 
   const allShows = showsJson.map(show => {
     return {
@@ -72,10 +72,6 @@ module.exports = function(app, config) {
 
   app.get("/api/data/movies", (req, res) => {
     res.json(allMovies);
-  });
-
-  app.get("/close-popup", (req, res) => {
-    res.sendFile(path.join(__dirname, "../src/close-popup/index.html"));
   });
 
   app.get("/api/data/tvshows/:id", (req, res) => {

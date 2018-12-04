@@ -1,12 +1,12 @@
-import { environment } from "./../environments/environments";
+import { config } from "./config";
 import * as Auth0 from "auth0-js";
 import { bindNodeCallback } from "rxjs";
 
 export default class Auth {
   auth0 = new Auth0.WebAuth({
-    domain: environment.auth.domain,
-    clientID: environment.auth.clientId,
-    redirectUri: environment.auth.popupRedirect,
+    domain: config.domain,
+    clientID: config.clientId,
+    redirectUri: config.redirect,
     responseType: "id_token",
     scope: "openid profile email"
   });
@@ -24,6 +24,8 @@ export default class Auth {
   login(navAccess) {
     this.auth0.popup.authorize({}, (err, results) => {
       console.log(err, results);
+      // @TODO: localLogin function if results
+      // @TODO: some kind of error handling if err
     });
     if (!navAccess) {
       // If user clicked login button organically, store
@@ -59,8 +61,8 @@ export default class Auth {
 
   logout() {
     this.get("auth0").logout({
-      clientID: environment.auth.clientId,
-      returnTo: "http://localhost:3000"
+      clientID: config.clientId,
+      returnTo: config.logoutUrl
     });
   }
 }

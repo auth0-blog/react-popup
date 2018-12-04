@@ -15,16 +15,9 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-// if (process.env.NODE_ENV !== "dev") {
-//   app.use(
-//     "/",
-//     express.static(path.join(__dirname, "../build/react-authentication"))
-//   );
-// }
-
-app.get("/close-popup", (req, res) => {
-  res.sendFile(path.join(__dirname, "../src/close-popup/index.html"));
-});
+if (process.env.NODE_ENV !== "dev") {
+  app.use("/", express.static(path.join(__dirname, "../build")));
+}
 
 require("../api/routes")(app, config);
 

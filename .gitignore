@@ -4,9 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
-/api/config.js
-/src/close-popup/index.html
-/src/environments/environments.js
+config.js
+/public/close-popup/index.html
 
 # testing
 /coverage
