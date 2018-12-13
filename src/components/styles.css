@@ -4,3 +4,31 @@
   align-items: center;
   flex-direction: column;
 }
+
+h3 {
+  color: rgb(33, 124, 94);
+}
+
+.card {
+  border: 2px solid black;
+  width: 20%;
+  background-color: peachpuff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 20px;
+  font-size: 12px;
+}
+
+.log-in {
+  width: 15%;
+  color: peachpuff;
+  background-color: rgb(33, 124, 94);
+  font-size: 25px;
+  margin: 20px;
+}
+
+h1 {
+  color: rgb(33, 124, 94);
+  margin: 20px;
+}

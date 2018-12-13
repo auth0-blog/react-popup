@@ -54,29 +54,15 @@ module.exports = function(app, config) {
     res.send("API is working");
   });
 
-  app.get("/api/public", (req, res) => {
-    setTimeout(() => {
-      res.json(showsJson);
-    }, delay());
-  });
-
-  app.get("/api/secure", authCheck, (req, res) => {
-    setTimeout(() => {
-      res.json(moviesJson);
-    }, delay());
-  });
-
   app.get("/api/data/tvshows", (req, res) => {
-    res.json(allShows);
+    setTimeout(() => {
+      res.json(allShows);
+    }, delay());
   });
 
-  app.get("/api/data/movies", (req, res) => {
-    res.json(allMovies);
-  });
-
-  app.get("/api/data/tvshows/:id", (req, res) => {
-    const id = req.params.id * 1;
-    const thisShow = showsJson.find(show => show.id === id);
-    res.json(thisShow);
+  app.get("/api/data/movies", authCheck, (req, res) => {
+    setTimeout(() => {
+      res.json(allMovies);
+    }, delay());
   });
 };
