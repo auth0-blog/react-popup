@@ -3,10 +3,9 @@ const moviesJson = require("./data/movies.json");
 const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
 const path = require("path");
+const config = require("./config");
 
-const delay = () => Math.random() * 2500;
-
-module.exports = function(app, config) {
+module.exports = function(app) {
   const authCheck = jwt({
     secret: jwks.expressJwtSecret({
       cache: true,
@@ -57,12 +56,12 @@ module.exports = function(app, config) {
   app.get("/api/data/tvshows", (req, res) => {
     setTimeout(() => {
       res.json(allShows);
-    }, delay());
+    });
   });
 
-  app.get("/api/data/movies", (req, res) => {
+  app.get("/api/data/movies", authCheck, (req, res) => {
     setTimeout(() => {
       res.json(allMovies);
-    }, delay());
+    });
   });
 };
