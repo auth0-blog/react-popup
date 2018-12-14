@@ -10,6 +10,9 @@ export default class Auth {
     scope: "openid profile email"
   });
 
+  loginCallback = () => {};
+  logoutCallback = () => {};
+
   authFlag = "isLoggedIn";
   authStatus = this.isAuthenticated
     ? "init_with_auth_flag"
@@ -23,11 +26,15 @@ export default class Auth {
     this.idTokenPayload = authResult.idTokenPayload;
     console.log(authResult.idToken, "id token");
     console.log(authResult.idTokenPayload, "profile");
+
+    this.loginCallback({ loggedIn: true });
   }
 
   localLogout() {
     localStorage.removeItem(this.authFlag);
     this.userProfile = null;
+
+    this.logoutCallback({ loggedIn: false });
   }
 
   setAuthStatus() {
@@ -40,7 +47,6 @@ export default class Auth {
       if (err) this.localLogout();
       else {
         this.localLogin(authResult);
-        window.location = "http://localhost:3000/movies";
       }
     });
   }

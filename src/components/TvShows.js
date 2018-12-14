@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Auth from "../auth/service";
 import "./styles.css";
 
 function TvShows() {
   const [shows, setShows] = useState([]);
-
-  const auth = new Auth();
 
   useEffect(() => {
     fetch("/api/data/tvShows")
@@ -24,10 +21,6 @@ function TvShows() {
           <h5>{shows.airDate}</h5>
         </div>
       ))}
-
-      <button onClick={() => auth.login()} className="log-in">
-        Log In
-      </button>
     </div>
   );
 }
