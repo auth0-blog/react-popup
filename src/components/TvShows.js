@@ -5,7 +5,7 @@ function TvShows() {
   const [shows, setShows] = useState([]);
 
   useEffect(() => {
-    fetch("/api/data/tvShows")
+    fetch("http://localhost:3005/api/data/tvShows")
       .then(response => response.json())
       .then(data => {
         setShows(data);

@@ -13,14 +13,14 @@ module.exports = function(app) {
       jwksRequestsPerMinute: 5,
       jwksUri: `https://${config.AUTH0_DOMAIN}/.well-known/jwks.json`
     }),
-    audience: [config.CLIENT_ID],
+    audience: [config.AUDIENCE],
     issuer: `https://${config.AUTH0_DOMAIN}/`,
     algorithm: "RS256"
   });
 
   if (process.env.NODE_ENV !== "dev") {
     // @TODO: should this be / or *? And why? Is this completely unnecessary in React?
-    app.get("/", (req, res) => {
+    app.get("*", (req, res) => {
       res.sendFile(path.join(__dirname, "../build/index.html"));
     });
   }
@@ -59,9 +59,12 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/data/movies", authCheck, (req, res) => {
-    setTimeout(() => {
-      res.json(allMovies);
-    });
-  });
+  app.get(
+    "/api/data/movies",
+    /* authCheck, */ (req, res) => {
+      setTimeout(() => {
+        res.json(allMovies);
+      });
+    }
+  );
 };

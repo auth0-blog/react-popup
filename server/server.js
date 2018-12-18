@@ -15,10 +15,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-if (process.env.NODE_ENV !== "dev") {
-  app.use("/", express.static(path.join(__dirname, "../build")));
-}
-
 require("../api/routes")(app, config);
 
 //---- Serve
