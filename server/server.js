@@ -1,12 +1,8 @@
-"use strict";
-
 // Dependencies
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
-// Config route
-const config = require("../api/config");
+const routes = require("../api/routes");
 
 // Setting up the app
 const app = express();
@@ -14,7 +10,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-require("../api/routes")(app, config);
+// Routes
+app.use("/", routes);
 
 //---- Serve
 const PORT = 3005;
