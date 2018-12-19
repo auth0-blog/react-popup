@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
 const path = require("path");

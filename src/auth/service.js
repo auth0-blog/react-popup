@@ -52,11 +52,6 @@ export default class Auth {
 
   getAccessToken() {
     return this.accessToken;
-    // return Promise.resolve(auth.accessToken);
-  }
-
-  showAccessToken() {
-    return this.getAccessToken();
   }
 
   renewAuthentication = () => {
