@@ -1,7 +1,7 @@
 import { config } from "./config";
 import * as Auth0 from "auth0-js";
 
-export default class Auth {
+class Auth {
   auth0 = new Auth0.WebAuth({
     domain: config.domain,
     clientID: config.clientId,
@@ -76,7 +76,6 @@ export default class Auth {
       if (err) this.localLogout();
       else {
         this.localLogin(authResult);
-        this.getAccessToken(authResult);
         this.accessToken = authResult.accessToken;
       }
     });
@@ -105,3 +104,7 @@ export default class Auth {
     });
   }
 }
+
+const auth = new Auth();
+
+export default auth;

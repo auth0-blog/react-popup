@@ -2,9 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.css";
 import "./TvShows";
 import TvShows from "./TvShows";
-import Auth from "../auth/service";
-
-// const auth = new Auth();
+import auth from "../auth/service";
 
 // const getMovies = () => Promise.resolve(moviesData);
 
@@ -12,7 +10,6 @@ function Movies() {
   const [movies, setMovies] = useState([]);
 
   // useEffect(() => {
-  // const auth = new Auth();
   //   auth
   //     .renewAuthentication()
   //     .then(auth =>
@@ -26,7 +23,6 @@ function Movies() {
   // const [movies, setMovies] = useState([]);
 
   // useEffect(() => {
-  //   const auth = new Auth();
   //   auth
   //     .getAccessToken()
   //     .then(token =>
@@ -41,8 +37,6 @@ function Movies() {
   // useEffect(() => {
   //   const { getAccessToken } = this.props.auth;
 
-  //   const auth = new Auth();
-
   //   auth
   //     .getAccessToken()
   //     .then(auth =>
@@ -55,7 +49,6 @@ function Movies() {
   // }, []);
 
   useEffect(() => {
-    const auth = new Auth();
     fetch("http://localhost:3005/api/data/movies", {
       headers: {
         Authorization: `Bearer ${auth.getAccessToken()}`

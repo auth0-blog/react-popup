@@ -1,39 +1,39 @@
 import React, { Component } from "react";
+import { Route, withRouter } from "react-router-dom";
 import "./App.css";
 import TvShows from "./components/TvShows.js";
 import Movies from "./components/Movies.js";
-import Auth from "./auth/service";
-
-const auth = new Auth();
+import auth from "./auth/service";
 
 class App extends Component {
-  loggedIn(state) {
-    // const { history } = this.props;
-    this.setState({ loggedIn: state.loggedIn });
-
-    // history.push("/movies");
-  }
-
-  loggedOut(state) {
-    // const { history } = this.props;
-    this.setState({ loggedIn: state.loggedIn });
-
-    // history.push("/");
-  }
-
   constructor(props) {
     super(props);
 
     auth.loginCallback = this.loggedIn.bind(this);
     auth.logoutCallback = this.loggedOut.bind(this);
 
-    this.state = { loggedIn: false };
+    this.state = {loggedIn: false};
+  }
+
+  loggedIn() {
+    this.setState({loggedIn: true});
+
+    const {history} = this.props;
+    history.push("/movies");
+  }
+
+  loggedOut() {
+    this.setState({loggedIn: false});
+
+    const {history} = this.props;
+    history.push("/");
   }
 
   render() {
     return (
       <div>
-        {this.state.loggedIn ? <Movies /> : <TvShows />}
+        <Route component={TvShows} exact path="/" />
+        <Route component={Movies} exact path="/movies" />
         {this.state.loggedIn ? (
           <button onClick={() => auth.logout()} className="log-in">
             Log Out
@@ -48,6 +48,4 @@ class App extends Component {
   }
 }
 
-// export default withRouter(App);
-
-export default App;
+export default withRouter(App);
