@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-// import { Route, withRouter } from "react-router-dom";
 import TvShows from "./components/TvShows.js";
 import Movies from "./components/Movies.js";
 import Auth from "./auth/service";
@@ -34,8 +33,6 @@ class App extends Component {
   render() {
     return (
       <div>
-        {/* <Route component={TvShows} path="/" exact />
-        <Route component={Movies} path="/movies" /> */}
         {this.state.loggedIn ? <Movies /> : <TvShows />}
         {this.state.loggedIn ? (
           <button onClick={() => auth.logout()} className="log-in">
