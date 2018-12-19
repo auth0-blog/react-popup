@@ -11,13 +11,6 @@ class Auth {
     scope: "openid profile email"
   });
 
-  // constructor() {
-  //   this.login = this.login.bind(this);
-  //   this.logout = this.logout.bind(this);
-  //   this.isAuthenticated = this.isAuthenticated.bind(this);
-  //   this.getAccessToken = this.getAccessToken.bind(this);
-  // }
-
   loginCallback = () => {};
   logoutCallback = () => {};
 
@@ -36,7 +29,6 @@ class Auth {
     this.userProfile = authResult.idTokenPayload;
     this.accessToken = authResult.accessToken;
     this.loginCallback({ loggedIn: true });
-    // this.getAccessToken({ accessToken: authResult.accessToken });
   }
 
   localLogout() {
@@ -84,17 +76,6 @@ class Auth {
   isAuthenticated() {
     return localStorage.getItem(this.authFlag) === "true";
   }
-
-  // checkLogin() {
-  //   // check to see if a user is authenticated, we'll get a token back
-  //   this.get("auth0").checkSession({}, (err, authResult) => {
-  //     // if we are wrong, stop everything now
-  //     if (err) return err;
-  //     this.localLogin();
-  //     this.setUser(authResult.accessToken);
-  //     this.accessToken = authResult.accessToken;
-  //   });
-  // }
 
   logout() {
     this.localLogout();

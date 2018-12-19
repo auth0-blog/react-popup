@@ -10,7 +10,7 @@ function TvShows() {
       .then(data => {
         setShows(data);
       });
-  }, []); // empty array because we only run once
+  }, []);
 
   return (
     <div>
