@@ -24,3 +24,6 @@ config.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# idea/webstorm files
+.idea/
