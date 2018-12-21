@@ -34,33 +34,12 @@ class Auth {
   localLogout() {
     localStorage.removeItem(this.authFlag);
     this.userProfile = null;
-
     this.logoutCallback({ loggedIn: false });
-  }
-
-  setAuthStatus() {
-    this.authStatus = "";
   }
 
   getAccessToken() {
     return this.accessToken;
   }
-
-  renewAuthentication = () => {
-    return new Promise((resolve, reject) => {
-      this.webAuth.checkSession({}, (err, authResult) => {
-        if (err) {
-          console.log(err);
-          this.localLogout();
-
-          return reject(err);
-        }
-
-        this.localLogin(authResult);
-        return resolve(authResult);
-      });
-    });
-  };
 
   login() {
     this.auth0.popup.authorize({}, (err, authResult) => {
