@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./components/styles.css";
 import TvShows from "./components/TvShows.js";
 import Movies from "./components/Movies.js";
 import auth from "./auth/service";
@@ -27,14 +27,14 @@ class App extends Component {
       <div>
         {this.state.loggedIn ? <Movies /> : <TvShows />}
         {this.state.loggedIn ? (
-          <button onClick={() => auth.logout()} className="log-in">
+          <button onClick={() => auth.logout()} className="log-button">
             Log Out
           </button>
         ) : (
-          <button onClick={() => auth.login()} className="log-in">
-            Log In
+            <button onClick={() => auth.login()} className="log-button">
+              Log In
           </button>
-        )}
+          )}
       </div>
     );
   }

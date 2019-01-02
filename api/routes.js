@@ -3,8 +3,8 @@ const jwt = require("express-jwt");
 const jwks = require("jwks-rsa");
 const path = require("path");
 
-const allShows = require("./data/tvShows.json");
-const allMovies = require("./data/movies.json");
+const allShows = require("./data/tvShows");
+const allMovies = require("./data/movies");
 const config = require("./config");
 
 const router = express.Router();

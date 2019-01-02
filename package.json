@@ -17,11 +17,12 @@
     "react-scripts": "2.1.1"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"NODE_ENV=dev nodemon server/server\"",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "stage": "react-scripts build && node server/server",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "node server": "server/server"
   },
   "eslintConfig": {
     "extends": "react-app"

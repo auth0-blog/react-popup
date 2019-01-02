@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const routes = require("../api/routes");
 
+const PORT = 3005;
+
 // Setting up the app
 const app = express();
 app.use(bodyParser.json());
@@ -14,5 +16,4 @@ app.use(cors());
 app.use("/", routes);
 
 //---- Serve
-const PORT = 3005;
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
