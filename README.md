@@ -37,6 +37,26 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+### `nodemon`
+
+Get the server running
+
+### Files Ignored
+
+There are a couple of files that are ignored. Be sure to include these:
+
+1. config.js
+2. /build/close-popup/index.html
+
+### Version of React
+
+We are using React Hooks in this example. It is still in it's alpha stage. Be sure to have that version of "react" and "react-dom":
+
+"react": "^16.7.0-alpha.2",
+"react-dom": "^16.7.0-alpha.2"
+
+Being that it is still in the alpha stage, updates may happen as React updates to a more permanent version.
+
 ## Learn More
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
