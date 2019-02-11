@@ -58,7 +58,7 @@ We are using React Hooks in this example. It is still in it's alpha stage. Be su
 Being that it is still in the alpha stage, updates may happen as React updates to a more permanent version. To install run the command:
 
 ```bash
-npm install -S react@16.7.0-alpha.2 react-dom@16.7.0-alpha.2
+npm install -S react@16.8.0-alpha.0 react-dom@16.8.0-alpha.0
 ```
 
 ## Learn More
