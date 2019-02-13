@@ -6,7 +6,7 @@
 .pnp.js
 config.js
 /build/close-popup/index.html
-public/close-popup/index.html
+close-popup/index.html
 
 # testing
 /coverage
