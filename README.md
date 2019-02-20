@@ -49,9 +49,9 @@ Install all the dependencies
 
 There are some files that are ignored. Be sure to include these:
 
-1. api/config.js
-2. src/auth/config.js
-3. /public/close-popup/index.html
+1. ./api/config.js
+2. ./src/auth/config.js
+3. ./public/close-popup/index.html
 
 ### Version of React
 
