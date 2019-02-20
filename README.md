@@ -41,24 +41,29 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Get the server running
 
+### `npm install`
+
+Install all the dependencies
+
 ### Files Ignored
 
-There are a couple of files that are ignored. Be sure to include these:
+There are some files that are ignored. Be sure to include these:
 
-1. config.js
-2. /build/close-popup/index.html
+1. ./api/config.js
+2. ./src/auth/config.js
+3. ./public/close-popup/index.html
 
 ### Version of React
 
-We are using React Hooks in this example. It is still in it's alpha stage. Be sure to have that version of "react" and "react-dom":
+We are using React Hooks in this example. Be sure to have that version of "react" and "react-dom":
 
-"react": "^16.7.0-alpha.2",
-"react-dom": "^16.7.0-alpha.2"
+react v16.8
+react-dom v16.8
 
-Being that it is still in the alpha stage, updates may happen as React updates to a more permanent version. To install run the command:
+To install run the command:
 
 ```bash
-npm install -S react@16.8.0-alpha.0 react-dom@16.8.0-alpha.0
+npm install -S react@16.8 react-dom@16.8
 ```
 
 ## Learn More
